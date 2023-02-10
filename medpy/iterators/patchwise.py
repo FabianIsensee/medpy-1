@@ -111,7 +111,7 @@ class SlidingWindowIterator():
         def_slicer = [slice(x, None if 0 == y else -1 * y) for x, y in padder]
         patch = self.array[slicer]
         patch = patch.reshape(self.psize)
-        pmask = numpy.zeros(self.psize, numpy.bool)
+        pmask = numpy.zeros(self.psize, bool)
         pmask[def_slicer] = True
         
         return patch, pmask, slicer
@@ -310,7 +310,7 @@ class CentredPatchIterator():
             padder.append( (max(0, -1 * sp), max(0, sp + self.psize[dim] - self.array.shape[dim])) )
         # create patch and patch mask
         patch = numpy.pad(self.array[slicer], padder, mode='constant', constant_values=self.cval)
-        pmask = numpy.pad(numpy.ones(self.array[slicer].shape, dtype=numpy.bool), padder, mode='constant', constant_values=0)
+        pmask = numpy.pad(numpy.ones(self.array[slicer].shape, dtype=bool), padder, mode='constant', constant_values=0)
         
         return patch, pmask, gridid, slicer
 
@@ -587,7 +587,7 @@ class CentredPatchIteratorOverlapping():
             padder.append( (max(0, -1 * sp), max(0, sp + self.psize[dim] - self.array.shape[dim])) )
         # create patch and patch mask
         patch = numpy.pad(self.array[slicer], padder, mode='constant', constant_values=self.cval)
-        pmask = numpy.pad(numpy.ones(self.array[slicer].shape, dtype=numpy.bool), padder, mode='constant', constant_values=0)
+        pmask = numpy.pad(numpy.ones(self.array[slicer].shape, dtype=bool), padder, mode='constant', constant_values=0)
         
         return patch, pmask, gridid, slicer
 

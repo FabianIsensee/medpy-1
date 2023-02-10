@@ -74,7 +74,7 @@ def main():
     # loading images
     data_input, header_input = load(args.input)
     if args.mask:
-        mask = load(args.mask)[0].astype(numpy.bool)
+        mask = load(args.mask)[0].astype(bool)
     else:
         mask = None
     

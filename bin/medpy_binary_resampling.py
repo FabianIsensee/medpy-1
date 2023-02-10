@@ -73,7 +73,7 @@ def main():
     
     # loading input images
     img, hdr = load(args.input)
-    img = img.astype(numpy.bool)
+    img = img.astype(bool)
     
     # check spacing values
     if not len(args.spacing) == img.ndim:
@@ -148,7 +148,7 @@ def shape_based_slice_interpolation(img, dim, nslices):
      
     for sl1, sl2 in zip(numpy.rollaxis(img, dim)[:-1], numpy.rollaxis(img, dim)[1:]):
         if 0 == numpy.count_nonzero(sl1) and 0 == numpy.count_nonzero(sl2):
-            chunk = numpy.zeros(chunk_full_shape, dtype=numpy.bool)
+            chunk = numpy.zeros(chunk_full_shape, dtype=bool)
         else:
             chunk = shape_based_slice_insertation_object_wise(sl1, sl2, dim, nslices)
         if out is None:
@@ -212,8 +212,8 @@ def shape_based_slice_insertation(sl1, sl2, dim, nslices, order=3):
         A binary image of size `sl1`.shape() extend by `nslices`+2 along the new
         dimension `dim`. The border slices are the original slices `sl1` and `sl2`.
     """
-    sl1 = sl1.astype(numpy.bool)
-    sl2 = sl2.astype(numpy.bool)
+    sl1 = sl1.astype(bool)
+    sl2 = sl2.astype(bool)
     
     # extrapolation through erosion
     if 0 == numpy.count_nonzero(sl1):

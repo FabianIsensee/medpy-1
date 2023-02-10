@@ -200,7 +200,7 @@ def indices(image, voxelspacing = None, mask = slice(None)):
         image = image[0]
         
     if not type(mask) is slice:
-        mask = numpy.array(mask, copy=False, dtype=numpy.bool)
+        mask = numpy.array(mask, copy=False, dtype=bool)
         
     if voxelspacing is None:
         voxelspacing = [1.] * image.ndim
@@ -682,7 +682,7 @@ def _extract_mask_distance(image, mask = slice(None), voxelspacing = None):
     Internal, single-image version of `mask_distance`.
     """
     if isinstance(mask, slice):
-        mask = numpy.ones(image.shape, numpy.bool)
+        mask = numpy.ones(image.shape, bool)
     
     distance_map = distance_transform_edt(mask, sampling=voxelspacing)
     
@@ -773,7 +773,7 @@ def _extract_feature(fun, image, mask = slice(None), **kwargs):
         Additional keyword arguments to be passed to the feature extraction function 
     """
     if not type(mask) is slice:
-        mask = numpy.array(mask, copy=False, dtype=numpy.bool)
+        mask = numpy.array(mask, copy=False, dtype=bool)
     
     if type(image) == tuple or type(image) == list:
         return join(*[fun(i, mask, **kwargs) for i in image])

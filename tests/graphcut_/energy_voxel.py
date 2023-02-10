@@ -49,7 +49,7 @@ class TestEnergyVoxel(unittest.TestCase):
     result = numpy.asarray([[0,0,0,0],
                             [0,0,0,0],
                             [0,0,1,1],
-                            [0,0,1,1]], dtype=numpy.bool)
+                            [0,0,1,1]], dtype=bool)
     
     gradient  = numpy.asarray([[0,0,0,0],
                                [0,1,1,1],
@@ -96,13 +96,13 @@ class TestEnergyVoxel(unittest.TestCase):
                                    [0,0,0,0,0],
                                    [0,0,0,0,0],
                                    [0,0,0,0,0],
-                                   [0,0,1,0,0]], dtype=numpy.bool)
+                                   [0,0,1,0,0]], dtype=bool)
         bgmarkers = numpy.asarray([[1,0,0,0,1],
                                    [0,0,0,0,0],
                                    [0,0,0,0,0],
                                    [0,0,0,0,0],
-                                   [0,0,0,0,0]], dtype=numpy.bool)
-        expected = image.astype(numpy.bool)
+                                   [0,0,0,0,0]], dtype=bool)
+        expected = image.astype(bool)
         graph = graph_from_voxels(fgmarkers,
                                   bgmarkers,
                                   boundary_term=boundary_difference_division,
@@ -160,7 +160,7 @@ class TestEnergyVoxel(unittest.TestCase):
             self.fail('An error was thrown during the external executions: {}'.format(e.message))
             
         # reshape results to form a valid mask
-        result = numpy.zeros(image.size, dtype=numpy.bool)
+        result = numpy.zeros(image.size, dtype=bool)
         for idx in range(len(result)): 
             result[idx] = 0 if graph.termtype.SINK == graph.what_segment(idx) else 1
         return result.reshape(image.shape)

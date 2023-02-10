@@ -54,7 +54,7 @@ def ght_alternative (img, template, indices):
     """
     # cast template to bool and img to numpy array
     img = numpy.asarray(img)
-    template = numpy.asarray(template).astype(numpy.bool)
+    template = numpy.asarray(template).astype(bool)
     
     # check supplied parameters
     if img.ndim != template.ndim:
@@ -66,7 +66,7 @@ def ght_alternative (img, template, indices):
     img_padded = pad(img, footprint=template, mode='constant')
     
     # prepare the hough image
-    if numpy.bool == img.dtype:
+    if bool == img.dtype:
         img_hough = numpy.zeros(img.shape, numpy.int32)
     else:
         img_hough = numpy.zeros(img.shape, img.dtype)
@@ -117,7 +117,7 @@ def ght(img, template):
     """    
     # cast template to bool and img to numpy array
     img = numpy.asarray(img)
-    template = numpy.asarray(template).astype(numpy.bool)
+    template = numpy.asarray(template).astype(bool)
     
     # check supplied parameters
     if img.ndim != template.ndim:
@@ -129,7 +129,7 @@ def ght(img, template):
     center = (numpy.asarray(template.shape) - 1) // 2
     
     # prepare the hough image
-    if numpy.bool == img.dtype:
+    if bool == img.dtype:
         img_hough = numpy.zeros(img.shape, numpy.int32)
     else:
         img_hough = numpy.zeros(img.shape, img.dtype)
@@ -193,7 +193,7 @@ def template_ellipsoid(shape):
         A boolean array containing an ellipsoid.
     """
     # prepare template array
-    template = numpy.zeros([int(x // 2 + (x % 2)) for x in shape], dtype=numpy.bool) # in odd shape cases, this will include the ellipses middle line, otherwise not
+    template = numpy.zeros([int(x // 2 + (x % 2)) for x in shape], dtype=bool) # in odd shape cases, this will include the ellipses middle line, otherwise not
 
     # get real world offset to compute the ellipsoid membership
     rw_offset = []

@@ -87,7 +87,7 @@ def main():
     
     # save resulting mask
     logger.info('Saving resulting mask as {} in the same format as input mask, only with data-type int8...'.format(args.output))
-    image_reduced_data = image_reduced_data.astype(numpy.bool, copy=False) # bool sadly not recognized
+    image_reduced_data = image_reduced_data.astype(bool, copy=False) # bool sadly not recognized
     save(image_reduced_data, args.output, image_mask_data_header, args.force)
     
     logger.info('Successfully terminated.')

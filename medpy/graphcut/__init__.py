@@ -159,7 +159,7 @@ Executing the graph-cut (depending on the image size, this might take a while).
 Building the resulting segmentation image, with True values for foreground and False
 values for background voxels.
 
->>> result_image_data = numpy.zeros(image_data.size, dtype=numpy.bool)
+>>> result_image_data = numpy.zeros(image_data.size, dtype=bool)
 >>> for idx in range(len(result_image_data)):
         result_image_data[idx] = 0 if gcgraph.termtype.SINK == gcgraph.what_segment(idx) else 1    
 >>> result_image_data = result_image_data.reshape(image_data.shape)

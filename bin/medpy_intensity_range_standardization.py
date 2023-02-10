@@ -97,7 +97,7 @@ def main():
     
     # loading binary foreground masks if supplied, else create masks from threshold value
     if args.masks:
-        masks = [load(mask_name)[0].astype(numpy.bool) for mask_name in args.masks]
+        masks = [load(mask_name)[0].astype(bool) for mask_name in args.masks]
     else:
         masks = [i > args.threshold for i in images]
     

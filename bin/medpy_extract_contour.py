@@ -71,7 +71,7 @@ def main():
     data_input, header_input = load(args.input)
     
     # treat as binary
-    data_input = data_input.astype(numpy.bool)
+    data_input = data_input.astype(bool)
     
     # check dimension argument
     if args.dimension and (not args.dimension >= 0 or not args.dimension < data_input.ndim):

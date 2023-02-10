@@ -71,7 +71,7 @@ def mkneighbors_graph(observations, n_neighbours, metric, mode='connectivity', m
     k_nearest_nbhs = numpy.argsort(pdists)[:,:n_neighbours]
     
     # create a mask denoting the k nearest neighbours in image_pdist
-    k_nearest_mutual_nbhs_mask = numpy.zeros(pdists.shape, numpy.bool)
+    k_nearest_mutual_nbhs_mask = numpy.zeros(pdists.shape, bool)
     for _mask_row, _nbhs_row in zip(k_nearest_mutual_nbhs_mask, k_nearest_nbhs):
         _mask_row[_nbhs_row] = True
         
